@@ -1,0 +1,29 @@
+<div class="main-search-input-wrap">
+  <div class="main-search-input fl-wrap">
+    <div class="main-search-input-item">
+      <input type="text" value="" placeholder="Search Products..." />
+    </div>
+
+    <button class="main-search-button">Search</button>
+  </div>
+</div>
+
+<div class="txt">
+  <span>All products</span>
+</div>
+
+<div class="container">
+  <div *ngFor="let product of products" class="myCard">
+    <img class="pointer" routerLink="/product/{{product.id}}" 
+    src="https://placehold.co/200x200" style="width: 100%;">
+    <h1 routerLink="/product/{{product.id}}" class="pointer">{{ product.title }}</h1>
+    <div class="buttons">
+      <button class="btn btn-primary">{{ product.price | number: '1.2-2' }} €</button>
+      <button class="star-button" [class.active]="isStarActive" (click)="toggleStar()">
+        <i class="fa-regular fa-star"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+

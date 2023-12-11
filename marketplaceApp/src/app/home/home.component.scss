@@ -1,0 +1,132 @@
+.container{
+    padding-top: 3em;
+    display: flex;
+    flex-wrap: wrap;
+
+    .myCard{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);    
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+    
+
+        .btn{
+            padding: 12px;
+            background-color: rgb(15, 12, 12);
+            margin-left: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+        }
+    
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    
+    .myCard button:hover{
+        opacity: 0.7;
+    }
+    
+}
+
+.txt{
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.main-search-input {
+      background: #fff;
+      padding: 0 120px 0 0;
+      border-radius: 1px;
+      margin-top: 20px;
+      box-shadow: 0px 0px 0px 6px rgba(255,255,255,0.3);
+      margin-bottom: 10%;
+      border-style:solid;
+  }
+  
+  .fl-wrap {
+      float: left;
+      width: 100%;
+      position: relative;
+  }
+
+  .main-search-input-item input:first-child {
+      border-radius: 100%;
+  }
+  
+  .main-search-input-item input {
+      float: left;
+      border: none;
+      width: 100%;
+      height: 50px;
+      padding-left: 20px;
+  }
+  
+  .main-search-button{
+  
+        background: rgb(67, 67, 70);
+  }
+  
+  .main-search-button {
+      position: absolute;
+      right: 0px;
+      height: 50px;
+      width: 120px;
+      color: #fff;
+      top: 0;
+      border: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      cursor: pointer;
+  }
+
+  
+  :focus {
+      outline: 0;
+  }
+  
+  
+  @media only screen and (max-width: 768px){
+  .main-search-input {
+    background: #fff;
+    padding: 0 120px 0 0;
+    border-radius: 1px;
+    box-shadow: 0px 0px 0px 6px rgba(255, 255, 255, 0.3);
+  }
+  
+  .main-search-input-item {
+      width: 100%;
+      border: 1px solid #eee;
+      height: 50px;
+      border: none;
+      margin-bottom: 10px;
+  }
+  
+  .main-search-input-item input {
+      border-radius: 6px !important;
+      background: #fff;
+  }
+  
+  .main-search-button {
+      position: relative;
+      float: left;
+      width: 100%;
+      border-radius: 6px;
+  }
+  }
+
+
+.star-button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    color: black;
+}
+
+.star-button.active{
+    color: red;
+}
