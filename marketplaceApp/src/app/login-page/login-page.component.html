@@ -1,0 +1,16 @@
+<div class="d-flex h-100 align-items-center">
+    <form class="login-form shadow p-3">
+        <div class="form-group mb-3">
+            <label for="emailInput">Email</label>
+            <input type="email" class="form-control" id="emailInput" formControlName="email" placeholder="Email">
+        </div>
+        <div class="form-group mb-3">
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="passwordInput" formControlName="password" placeholder="Password">
+        </div>
+        <div class="mb-3 text-center">Don't have an account? <a routerLink="/register-page">Register</a> instead</div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn" (click)="login()">Login</button>
+        </div>
+    </form>
+</div>

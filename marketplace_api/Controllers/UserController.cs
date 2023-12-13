@@ -1,4 +1,5 @@
-﻿using marketplace_api.Models;
+﻿using FluentValidation;
+using marketplace_api.Models;
 using marketplace_api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace marketplace_api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUsersService _usersService;
+        private readonly AbstractValidator<User> _validator;    
 
-        public UserController(IUsersService usersService)
+        public UserController(IUsersService usersService, AbstractValidator<User> validator)
         {
             _usersService = usersService;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -60,7 +63,14 @@ namespace marketplace_api.Controllers
         public ActionResult PostUser([FromBody] User user)
         {
             try
-            { 
+            {
+                var validation = _validator.Validate(user);
+
+                if (validation.IsValid)
+                {
+                    return new BadRequestObjectResult(validation.Errors.Select(error => error.ErrorMessage));
+                }
+
                 var dbUser = _usersService.PostUser(user);
                 return new OkObjectResult(dbUser);
             }
@@ -79,6 +89,13 @@ namespace marketplace_api.Controllers
         {
             try
             {
+                var validation = _validator.Validate(user);
+
+                if (validation.IsValid)
+                {
+                    return new BadRequestObjectResult(validation.Errors.Select(error => error.ErrorMessage));
+                }
+
                 _usersService.EditUser(id, user);
                 return new OkObjectResult(true);
             }
