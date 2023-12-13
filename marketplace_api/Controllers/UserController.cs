@@ -3,6 +3,7 @@ using marketplace_api.Models;
 using marketplace_api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace marketplace_api.Controllers
 {
@@ -58,8 +59,39 @@ namespace marketplace_api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet("current")]
         [Authorize]
+        public ActionResult GetCurrentUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            try
+            {
+                if (identity != null)
+                {
+                    var claims = identity.Claims;
+                    int userId = int.Parse(claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value ?? "0");
+
+                    var user = _usersService.GetUser(userId);
+                    return new OkObjectResult(user);
+                }
+                return new NotFoundResult();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return new NotFoundObjectResult(ex.Message);
+            }
+            catch
+            {
+                return new ObjectResult("Something went wrong!")
+                {
+                    StatusCode = 500
+                };
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
         public ActionResult PostUser([FromBody] User user)
         {
             try

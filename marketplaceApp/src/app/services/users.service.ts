@@ -8,8 +8,8 @@ import { User } from '../models/user';
 })
 export class UsersService {
 
-  baseURL: string = "https://localhost:7196/";
-  apiPath: string = "api/Users";
+  baseURL: string = "https://localhost:7141/";
+  apiPath: string = "api/User";
 
   constructor(private httpClient: HttpClient) { }
 
