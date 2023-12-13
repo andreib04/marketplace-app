@@ -1,5 +1,6 @@
 ﻿using marketplace_api.Models;
 using marketplace_api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace marketplace_api.Controllers
@@ -54,6 +55,7 @@ namespace marketplace_api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult PostProduct([FromBody] Product product)
         {
             try
@@ -75,6 +77,7 @@ namespace marketplace_api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public ActionResult EditProduct(int id, [FromBody] Product product)
         {
             try
@@ -96,6 +99,7 @@ namespace marketplace_api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public ActionResult DeleteArticle(int id)
         {
             try

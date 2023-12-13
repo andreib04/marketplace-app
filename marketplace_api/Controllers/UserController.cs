@@ -56,6 +56,7 @@ namespace marketplace_api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult PostUser([FromBody] User user)
         {
             try
@@ -73,6 +74,7 @@ namespace marketplace_api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public ActionResult EditUser(int id, [FromBody] User user)
         {
             try
@@ -94,6 +96,7 @@ namespace marketplace_api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public ActionResult DeleteUser(int id)
         {
             try
