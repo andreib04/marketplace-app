@@ -22,9 +22,10 @@
     </ul>
   </div>
   <div class="post">
-    <button class="btn btn-light ml-auto" routerLinkActive="active" routerLink="/add-product">Add Product</button>
+    <button class="btn btn-light ml-auto" routerLink="/add-product">Add Product</button>
   </div>
   <div class="login">
-    <button class="btn btn-danger ml-auto" routerLinkActive="active" routerLink="/login-page">Login</button>
+    <button class="btn btn-danger ml-auto" routerLink="/login-page" *ngIf="!globalService.isLoggedIn">Login</button>
+    <button class="btn btn-danger ml-auto" (click)="logout()" *ngIf="globalService.isLoggedIn">Logout</button>
   </div>
 </nav>

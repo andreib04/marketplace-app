@@ -19,9 +19,9 @@
     <h1 routerLink="/product/{{product.id}}" class="pointer">{{ product.title }}</h1>
     <div class="buttons">
       <button class="btn btn-primary">{{ product.price | number: '1.2-2' }} €</button>
-      <button class="star-button" [class.active]="isStarActive" (click)="toggleStar()">
+      <!-- <button class="star-button" [class.active]="isStarActive" (click)="toggleStar()">
         <i class="fa-regular fa-star"></i>
-      </button>
+      </button> -->
     </div>
   </div>
 </div>

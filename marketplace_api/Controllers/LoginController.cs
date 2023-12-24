@@ -22,64 +22,47 @@ namespace marketplace_api.Controllers
             _config = config;
         }
 
-        [AllowAnonymous]
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login([FromBody] UserLogin userLogin)
         {
-            var user = Authenticate(userLogin);
-
-            if(user != null)
+            try
             {
-                var token = Generate(user);
-                return new OkObjectResult(token);
+                var user = Authenticate(userLogin);
+                var token = GenerateToken(user);
+                return new OkObjectResult(new { token });
             }
-
-            return new NotFoundObjectResult("The user could not be found");
-        }
-
-
-        [HttpGet]
-        public ActionResult GetCurrentUser()
-        {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-
-            if(identity != null)
+            catch (Exception ex)
             {
-                var claims = identity.Claims;
-                string name = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value ?? " ";
-
-                var user = new User
-                {
-                    id = int.Parse(claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value ?? "0"),
-                    firstName = name?.Split(" ").First() ?? "",
-                    lastName = name.Split(" ").Last() ?? "",
-                    email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? ""
-                };
-                return new OkObjectResult(user);
+                return new BadRequestObjectResult(ex.Message);
             }
-            return new NoContentResult();
         }
 
-        private User? Authenticate(UserLogin userLogin)
+        private User Authenticate(UserLogin userLogin)
         {
-            return _databaseContext.Users.FirstOrDefault(u =>
-                    u.email.ToLower() == userLogin.Email.ToLower() && u.password == userLogin.Password);
+            var user = _databaseContext.Users.FirstOrDefault(u =>
+                u.email.ToLower() == userLogin.Email.ToLower() && u.password == userLogin.Password);
+
+            if (user == null)
+                throw new KeyNotFoundException($"UserName or password are incorrect!");
+
+            return user;
         }
 
-        private string Generate(User user)
+        private string GenerateToken(User user)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"] ?? ""));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new Claim[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.id.ToString()),
                 new Claim(ClaimTypes.Name, user.firstName + " " + user.lastName),
-                new Claim(ClaimTypes.Email, user.email)
+                new Claim(ClaimTypes.Email, user.email),
+                new Claim(ClaimTypes.Role, user.Role)
             };
-
-            var token = new JwtSecurityToken(_config["Issuer"],
-                _config["Audience"],
+            var token = new JwtSecurityToken(_config["JWT:Issuer"],
+                _config["JWT:Audience"],
                 claims,
                 expires: DateTime.Now.AddMinutes(2),
                 signingCredentials: credentials);

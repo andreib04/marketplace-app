@@ -98,7 +98,7 @@ namespace marketplace_api.Controllers
             {
                 var validation = _validator.Validate(user);
 
-                if (validation.IsValid)
+                if (!validation.IsValid)
                 {
                     return new BadRequestObjectResult(validation.Errors.Select(error => error.ErrorMessage));
                 }
@@ -106,7 +106,7 @@ namespace marketplace_api.Controllers
                 var dbUser = _usersService.PostUser(user);
                 return new OkObjectResult(dbUser);
             }
-            catch
+            catch(Exception ex)
             {
                 return new ObjectResult("Something went wrong!")
                 {

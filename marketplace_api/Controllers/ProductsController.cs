@@ -2,6 +2,8 @@
 using marketplace_api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.HttpResults;
+using System.Security.Claims;
 
 namespace marketplace_api.Controllers
 {
@@ -58,10 +60,15 @@ namespace marketplace_api.Controllers
         [Authorize]
         public ActionResult PostProduct([FromBody] Product product)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
             try
             {
+                int authorId = int.Parse(identity?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value ?? "0");
+                product.authorId = authorId;
+
                 var dbProduct = _productsService.PostProduct(product);
-                return new OkObjectResult(product);
+                return new OkObjectResult(dbProduct);
             }
             catch (KeyNotFoundException e)
             {
