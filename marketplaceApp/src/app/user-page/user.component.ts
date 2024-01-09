@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { product } from '../models/product';
 
 @Component({
   selector: 'app-user',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class UserComponent {
 
+  product: product = {} as product;
 }

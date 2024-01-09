@@ -7,7 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { FavoriteComponent } from './favorite/favorite.component';
-import { UserComponent } from './user/user.component';
+import { UserComponent } from './user-page/user.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { AddProductPageComponent } from './add-product-page/add-product-page.component';
 import { HttpClientModule } from '@angular/common/http';

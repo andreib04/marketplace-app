@@ -1,3 +1,26 @@
-{{product.title}}
-{{product.description}}
-{{product.price}}
+<div class="product-page shadow">
+    <div class="product-details shadow">
+        <h1 class="product-title mx-5">
+            <div>{{product.title}}</div>
+        </h1>
+        <div class="p-3 mx-4">
+            <img src="https://placehold.co/512x512">
+        </div>
+        <div class="mb-0 my-3 mx-5 mw-500">
+            <p>{{product.description}}</p>
+        </div>
+    </div>
+
+    <div class="user-info">
+        <div class="profile-picture">
+            <img class="profile-pic" routerLink="/user/{{product.authorId}}" src="https://placehold.co/64x64">
+        </div>
+        <div class="profile-info">
+            <h3 class="my-2">{{product.author.firstName}} {{product.author.lastName}}</h3>
+            <h4 class="phone">{{product.author.phone}}</h4>
+        </div>
+        <div class="add-cart-btn">
+            <button class="btn btn-dark">Add to cart</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+.product-page{
+    margin-top: 2em;
+    margin-bottom: 5em;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: center;
+}
+
+.product-details{
+    margin: 10px;
+}
+
+.profile-picture{
+    display: flex;
+    justify-content: center;
+}
+
+.profile-pic{
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.product-title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.phone{
+    display: flex;
+    justify-content: center;
+}
+
+.add-cart-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    width: 120px;
+    height: 60px;
+}
+

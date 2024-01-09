@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FavoriteComponent } from './favorite/favorite.component';
-import { UserComponent } from './user/user.component';
+import { UserComponent } from './user-page/user.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { AddProductPageComponent } from './add-product-page/add-product-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'login-page', component: LoginPageComponent },
   { path: 'register-page', component:RegisterPageComponent },
 
+  { path: 'user/:id', component: UserComponent },
   { path: 'product/:id', component: ProductPageComponent }
 ];
 

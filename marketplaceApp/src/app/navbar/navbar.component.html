@@ -14,15 +14,16 @@
   <div>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link text-right" routerLinkActive="active" routerLink="/favorite">Favorite</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-right" routerLinkActive="active" routerLink="/user">Your account</a>
+        <a class="nav-link text-right" routerLinkActive="active" routerLink="/favorite">Cart</a>
       </li>
     </ul>
   </div>
   <div class="post">
-    <button class="btn btn-light ml-auto" routerLink="/add-product">Add Product</button>
+    <button class="btn btn-light ml-auto" routerLink="/add-product" *ngIf="globalService.isLoggedIn">Add Product</button>
+  </div>
+  <div class="profile-picture">
+    <img class="profile-pic" routerLink="" src="https://placehold.co/64x64"
+    *ngIf="globalService.isLoggedIn">    <!--todo user id-->
   </div>
   <div class="login">
     <button class="btn btn-danger ml-auto" routerLink="/login-page" *ngIf="!globalService.isLoggedIn">Login</button>

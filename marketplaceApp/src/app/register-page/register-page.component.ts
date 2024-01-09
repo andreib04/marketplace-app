@@ -9,6 +9,7 @@ import { User } from '../models/user';
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPageComponent {
+
   MatchingValidator: ValidatorFn = (form: AbstractControl): ValidationErrors | null => {
     return (formGroup: FormGroup) => {
       const control = form.get("password");
@@ -56,7 +57,7 @@ export class RegisterPageComponent {
         lastName: this.form.controls['lastName'].value,
         phone: this.form.controls['phone'].value,
         email: this.form.controls['email'].value,
-        password: this.form.controls['password'].value
+        password: this.form.controls['password'].value,
       } as User;
 
       this.userService.postUser(user).subscribe(res => {

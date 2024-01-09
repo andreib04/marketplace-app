@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from '../services/global.service';
+import { product } from '../models/product';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +10,8 @@ import { GlobalService } from '../services/global.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
+  user: User = {} as User;
 
   constructor(private offcanvasService: NgbOffcanvas, public globalService: GlobalService) {
     if(localStorage.getItem('token')){

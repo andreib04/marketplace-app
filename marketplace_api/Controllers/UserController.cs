@@ -106,7 +106,7 @@ namespace marketplace_api.Controllers
                 var dbUser = _usersService.PostUser(user);
                 return new OkObjectResult(dbUser);
             }
-            catch(Exception ex)
+            catch
             {
                 return new ObjectResult("Something went wrong!")
                 {

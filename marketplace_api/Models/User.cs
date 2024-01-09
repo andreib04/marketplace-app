@@ -9,7 +9,7 @@
         public string password { get; set; } = null!;
         public string phone { get; set; } = null!;
 
-        public string Role { get; set; } = null!;
+        public string Role { get; set; } = "";
 
         public List<Product> Products { get; set; } = new List<Product>();
     }

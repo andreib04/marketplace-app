@@ -11,7 +11,8 @@
     
 
         .btn{
-            padding: 12px;
+            margin-top: 10px;
+            padding: 8px;
             background-color: rgb(15, 12, 12);
             margin-left: 10px;
             cursor: pointer;
@@ -21,7 +22,7 @@
     
         .buttons{
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
         }
     }
     
