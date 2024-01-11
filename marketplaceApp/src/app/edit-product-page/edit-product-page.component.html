@@ -1,5 +1,6 @@
 <div class="add-page">
     <form [formGroup]="form" class="add-form shadow p-3 my-5">
+        <h2 class="text-center">Edit product #{{product.id}}</h2>
         <div class="form-group">
             <label for="titleInput">Title</label>
             <input class="form-control" type="text" id="titleInput" formControlName="title" placeholder="Enter product title...">
@@ -14,7 +15,8 @@
         </div>
 
         <div>
-            <button type="submit" (click)="addProduct()">Add Product</button>
+            <button type="submit" (click)="editArticle()">Edit Product</button>
         </div>
     </form>
 </div>
+

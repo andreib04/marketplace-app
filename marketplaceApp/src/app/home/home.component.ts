@@ -9,16 +9,13 @@ import { ProductsService } from '../services/products.service';
 })
 export class HomeComponent {
   products: product[] = [
-    {title: "titlu",
-     description: "descriere",
-     price: 15} as product
+    {
+        id: 1,
+        title: "titlu",
+        description: "descriere",
+        price: 15
+    } as product
   ];
-
-  isStarActive = false;
-
-  toggleStar(){
-    this.isStarActive = !this.isStarActive;
-  }
 
   constructor(private productsService: ProductsService){
     this.productsService.getProducts().subscribe(async (res) => {       

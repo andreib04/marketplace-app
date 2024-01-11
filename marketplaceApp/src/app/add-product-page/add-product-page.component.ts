@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductsService } from '../services/products.service';
+import { product } from '../models/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-page',
@@ -6,5 +10,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-product-page.component.scss']
 })
 export class AddProductPageComponent {
+  form: FormGroup = new FormGroup({
+    title: new FormControl<string>('', [Validators.required]),
+    description: new FormControl<string>('', [Validators.required, Validators.minLength(15)]),
+    price: new FormControl<number>(0, [Validators.required]),
+  });
 
+  constructor(private productsService: ProductsService) {}
+
+  addProduct(){
+    if(this.form.valid){
+      let product: product = {
+        title: this.form.controls['title'].value,
+        description: this.form.controls['description'].value,
+        price: this.form.controls['price'].value
+      } as product;
+
+      this.productsService.postProduct(product).subscribe(res => {
+        console.log(res);
+      })
+    }
+  }
 }

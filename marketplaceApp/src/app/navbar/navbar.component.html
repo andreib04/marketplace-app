@@ -14,7 +14,7 @@
   <div>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link text-right" routerLinkActive="active" routerLink="/favorite">Cart</a>
+        <a class="nav-link text-right" routerLinkActive="active" routerLink="/cart">Cart</a>
       </li>
     </ul>
   </div>
@@ -26,7 +26,7 @@
     *ngIf="globalService.isLoggedIn">    <!--todo user id-->
   </div>
   <div class="login">
-    <button class="btn btn-danger ml-auto" routerLink="/login-page" *ngIf="!globalService.isLoggedIn">Login</button>
+    <button class="btn btn-outline-success ml-auto" routerLink="/login-page" *ngIf="!globalService.isLoggedIn">Login</button>
     <button class="btn btn-danger ml-auto" (click)="logout()" *ngIf="globalService.isLoggedIn">Logout</button>
   </div>
 </nav>

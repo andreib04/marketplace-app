@@ -20,7 +20,12 @@
             <h4 class="phone">{{product.author.phone}}</h4>
         </div>
         <div class="add-cart-btn">
-            <button class="btn btn-dark">Add to cart</button>
+            <button class="btn btn-dark">Add to cart {{ product.price | number: '1.2-2' }} €</button>
         </div>
+    </div>
+
+    <div class="edit">
+        <button routerLink="/edit">Edit</button>
+        <!-- <bi name="PencilFill"></bi> -->
     </div>
 </div>
