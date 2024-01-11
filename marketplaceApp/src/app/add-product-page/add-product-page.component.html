@@ -1,3 +1,7 @@
+<div class="title">
+    <h2 class="text-center">Add product</h2>
+</div>
+
 <div class="add-page">
     <form [formGroup]="form" class="add-form shadow p-3 my-5">
         <div class="form-group">
@@ -13,8 +17,8 @@
             <input class="form-control" type="number" id="priceInput" formControlName="price" placeholder="Enter product price...">
         </div>
 
-        <div>
-            <button type="submit" (click)="addProduct()">Add Product</button>
+        <div class="button">
+            <button class="btn btn-outline-primary" type="submit" (click)="addProduct()">Add Product</button>
         </div>
     </form>
 </div>
