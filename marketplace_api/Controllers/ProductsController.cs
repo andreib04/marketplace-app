@@ -57,7 +57,7 @@ namespace marketplace_api.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult PostProduct([FromBody] Product product)
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;

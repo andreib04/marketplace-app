@@ -1,19 +1,20 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from '../services/global.service';
-import { product } from '../models/product';
 import { User } from '../models/user';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  cartItemCounter: number = 0;
 
   user: User = {} as User;
 
-  constructor(private offcanvasService: NgbOffcanvas, public globalService: GlobalService) {
+  constructor(private offcanvasService: NgbOffcanvas, public globalService: GlobalService, private cartService: CartService) {
     if(localStorage.getItem('token')){
       this.globalService.setLogIn(true);
     }
@@ -26,5 +27,11 @@ export class NavbarComponent {
   logout(){
     localStorage.removeItem('token');
     this.globalService.setLogIn(false);
+  }
+
+  ngOnInit(): void {
+    this.cartService.getItemsObservable().subscribe((items) => {
+      this.cartItemCounter = items.length;
+    });
   }
 }

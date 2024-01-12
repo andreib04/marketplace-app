@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { product } from '../models/product';
 import { ProductsService } from '../services/products.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,14 @@ export class HomeComponent {
     } as product
   ];
 
-  constructor(private productsService: ProductsService){
+  constructor(private productsService: ProductsService, private cartService: CartService){
     this.productsService.getProducts().subscribe(async (res) => {       
       this.products = res;
     })
-  }                       
+  }       
+  
+  addToCart(product: product){
+    this.cartService.addToCart(product);
+  }
 
 }

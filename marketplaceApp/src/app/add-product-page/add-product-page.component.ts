@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddProductPageComponent {
   form: FormGroup = new FormGroup({
     title: new FormControl<string>('', [Validators.required]),
-    description: new FormControl<string>('', [Validators.required, Validators.minLength(15)]),
+    description: new FormControl<string>('', [Validators.required]),
     price: new FormControl<number>(0, [Validators.required]),
   });
 

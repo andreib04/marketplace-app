@@ -14,13 +14,13 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'user', component: UserComponent },
   { path: 'add-product', component: AddProductPageComponent }, 
-  { path: 'edit', component: EditProductPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   { path: 'login-page', component: LoginPageComponent },
   { path: 'register-page', component:RegisterPageComponent },
 
   { path: 'user/:id', component: UserComponent },
+  { path: 'product/:id/edit', component: EditProductPageComponent },
   { path: 'product/:id', component: ProductPageComponent }
 ];
 

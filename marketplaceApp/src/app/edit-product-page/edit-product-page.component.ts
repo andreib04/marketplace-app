@@ -13,7 +13,7 @@ export class EditProductPageComponent {
 
   form: FormGroup = new FormGroup({
     title: new FormControl<string>('', [Validators.required]),
-    description: new FormControl<string>('', [Validators.required, Validators.minLength(15)]),
+    description: new FormControl<string>('', [Validators.required]),
     price: new FormControl<number>(0, [Validators.required]),
   });
 
@@ -26,7 +26,7 @@ export class EditProductPageComponent {
     })
   }
 
-  editArticle(){
+  editProduct(){
     if(this.form.valid){
       this.product = {
         id: this.product.id,
