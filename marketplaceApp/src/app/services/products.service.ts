@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { product } from '../models/product';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ProductsService {
   baseURL: string = "https://localhost:7141/";
   apiPath: string = "api/Products";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private globalService: GlobalService) { }
 
   getProducts():Observable<product[]>{
     return this.httpClient.get<product[]>(`${this.baseURL}${this.apiPath}`);
@@ -22,7 +23,7 @@ export class ProductsService {
   }
 
   postProduct(product: product): Observable<product>{
-    return this.httpClient.post<product>(`${this.baseURL}${this.apiPath}`, product);
+    return this.httpClient.post<product>(`${this.baseURL}${this.apiPath}`, product); 
   }
 
   editProduct(id:number, product: product): Observable<product>{

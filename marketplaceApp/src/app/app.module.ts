@@ -10,13 +10,14 @@ import { UserComponent } from './user-page/user.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { AddProductPageComponent } from './add-product-page/add-product-page.component';
 import { CartComponent } from './cart/cart.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditProductPageComponent } from './edit-product-page/edit-product-page.component';
 import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 import { PencilFill, EnvelopeCheckFill, TrashFill } from 'ng-bootstrap-icons/icons'
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 const icons = {
   PencilFill,
@@ -45,7 +46,13 @@ const icons = {
     ReactiveFormsModule,
     BootstrapIconsModule.pick(icons)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserLogin } from '../models/userLogin';
 import { Observable } from 'rxjs';
-import { Token } from '@angular/compiler';
+import { Token } from '../models/token';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { Token } from '@angular/compiler';
 export class LoginServiceService {
 
   baseURL: string = "https://localhost:7141/";
-  apiPath: string = "api/Login";
+  apiPath: string = "api/login/";
 
   constructor(private httpClient: HttpClient) { }
 

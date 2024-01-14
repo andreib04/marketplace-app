@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { GlobalService } from './global.service';
-import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpInterceptorService {
+export class HttpInterceptorService implements HttpInterceptor{
 
   constructor(private globalService: GlobalService) { }
 

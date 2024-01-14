@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,4 +13,9 @@ export class GlobalService {
   setLogIn(isLoggedIn: boolean){
     this.isLoggedIn = isLoggedIn;
   }
+
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('token')}`
+  });
 }

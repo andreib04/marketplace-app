@@ -16,7 +16,7 @@
   <div *ngFor="let product of products" class="myCard">
     <img class="pointer" routerLink="/product/{{product.id}}" 
     src="https://placehold.co/200x200" style="width: 100%;">
-    <h1 routerLink="/product/{{product.id}}" class="pointer">{{ product.title }}</h1>
+    <p routerLink="/product/{{product.id}}" class="pTitle pointer">{{ product.title }}</p>
     <div class="buttons">
       <button class="btn btn-primary" (click)="addToCart(product)">{{ product.price | number: '1.2-2' }} €</button>
     </div>
