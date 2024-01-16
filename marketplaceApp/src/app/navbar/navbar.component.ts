@@ -3,6 +3,8 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from '../services/global.service';
 import { User } from '../models/user';
 import { CartService } from '../services/cart.service';
+import { UsersService } from '../services/users.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,18 +13,15 @@ import { CartService } from '../services/cart.service';
 })
 export class NavbarComponent implements OnInit {
   cartItemCounter: number = 0;
-
   user: User = {} as User;
 
-  constructor(private offcanvasService: NgbOffcanvas, public globalService: GlobalService, private cartService: CartService) {
+  constructor(public globalService: GlobalService,
+     private cartService: CartService, private usersService: UsersService) {
     if(localStorage.getItem('token')){
       this.globalService.setLogIn(true);
     }
   }
 
-  open(content: any) {
-		this.offcanvasService.open(content).result.then();
-	}
 
   logout(){
     localStorage.removeItem('token');

@@ -13,7 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProductPageComponent } from './edit-product-page/edit-product-page.component';
 import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 import { PencilFill, EnvelopeCheckFill, TrashFill } from 'ng-bootstrap-icons/icons'
@@ -44,7 +44,8 @@ const icons = {
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BootstrapIconsModule.pick(icons)
+    BootstrapIconsModule.pick(icons),
+    FormsModule
   ],
   providers: [
     {

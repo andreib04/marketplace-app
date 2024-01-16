@@ -21,10 +21,6 @@
   <div class="post">
     <button class="btn btn-light ml-auto" routerLink="/add-product" *ngIf="globalService.isLoggedIn">Add Product</button>
   </div>
-  <div class="profile-picture">
-    <img class="profile-pic" routerLink="" src="https://placehold.co/64x64"
-    *ngIf="globalService.isLoggedIn">    <!--todo user id-->
-  </div>
   <div class="login">
     <button class="btn btn-outline-success ml-auto" routerLink="/login-page" *ngIf="!globalService.isLoggedIn">Login</button>
     <button class="btn btn-danger ml-auto" (click)="logout()" *ngIf="globalService.isLoggedIn">Logout</button>

@@ -4,7 +4,7 @@
             <div>{{product.title}}</div>
         </h1>
         <div class="p-3 mx-4">
-            <img src="https://placehold.co/512x512">
+            <img src="https://dummyimage.com/512x512/000/fff">
         </div>
         <div class="mb-0 my-3 mx-5 mw-500">
             <p>{{product.description}}</p>
@@ -17,15 +17,15 @@
         </div>
         <div class="profile-info">
             <h3 class="my-2">{{product.author.firstName}} {{product.author.lastName}}</h3>
-            <h4 class="phone">{{product.author.phone}}</h4>
+            <h4 class="phone"><i class="fa-solid fa-phone"></i>  {{product.author.phone}}</h4>
         </div>
         <div class="add-cart-btn">
-            <button class="btn btn-dark">Add to cart {{ product.price | number: '1.2-2' }} €</button>
+            <button class="btn btn-dark" (click)="addToCart(product)">Add to cart {{ product.price | number: '1.2-2' }} €</button>
         </div>
     </div>
 
-    <div class="edit">
-        <button routerLink="edit">Edit</button>
-        <!-- <bi name="PencilFill"></bi> -->
+    <div class="action-buttons" *ngIf="globalService.isLoggedIn">
+        <button class="btn btn-outline-success w-50" routerLink="edit"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="btn btn-outline-danger w-50" (click)="deleteProduct()"><i class="fa-solid fa-trash"></i></button>
     </div>
 </div>

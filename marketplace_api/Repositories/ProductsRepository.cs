@@ -54,6 +54,12 @@ namespace marketplace_api.Repositories
                 throw new KeyNotFoundException($"Can not find product with id {id}");
             }
 
+            var user = _dbContext.Users.FirstOrDefault(user => user.id == product.authorId);
+            if(user == null)
+            {
+                throw new KeyNotFoundException($"Can not find user with id {product.authorId}");
+            }
+
             dbProduct.title = product.title;
             dbProduct.description = product.description;
             dbProduct.price = product.price;

@@ -16,9 +16,9 @@ export class AddProductPageComponent {
     price: new FormControl<number>(0, [Validators.required]),
   });
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService, private router: Router) {}
 
-  addProduct(){
+  createProduct(){
     if(this.form.valid){
       let product: product = {
         title: this.form.controls['title'].value,
@@ -28,6 +28,7 @@ export class AddProductPageComponent {
 
       this.productsService.postProduct(product).subscribe(res => {
         console.log(res);
+        this.router.navigate(['product', res.id]);
       })
     }
   }

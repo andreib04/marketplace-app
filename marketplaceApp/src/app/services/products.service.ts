@@ -27,10 +27,20 @@ export class ProductsService {
   }
 
   editProduct(id:number, product: product): Observable<product>{
-    return this.httpClient.put<product>(`${this.baseURL}${this.apiPath}`, product);
+    const headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+
+    return this.httpClient.put<product>(`${this.baseURL}${this.apiPath}`, product, {headers});
   }
 
   deleteProduct(id: number): Observable<product>{
-    return this.httpClient.delete<product>(`${this.baseURL}${this.apiPath}/${id}`)
+    const headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+
+    return this.httpClient.delete<product>(`${this.baseURL}${this.apiPath}/${id}`, {headers})
   }
 }

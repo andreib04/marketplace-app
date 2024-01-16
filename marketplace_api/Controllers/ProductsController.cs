@@ -87,6 +87,16 @@ namespace marketplace_api.Controllers
         [Authorize]
         public ActionResult EditProduct(int id, [FromBody] Product product)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var claims = identity?.Claims;
+            int userId = int.Parse(claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value ?? "0");
+
+
+            if(product.authorId != userId)
+            {
+                return new ForbidResult();
+            }
+
             try
             {
                 _productsService.EditProduct(id, product);
@@ -109,8 +119,18 @@ namespace marketplace_api.Controllers
         [Authorize]
         public ActionResult DeleteArticle(int id)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var claims = identity?.Claims;
+            int userId = int.Parse(claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value ?? "0");
+
             try
             {
+                Product exist = _productsService.GetProduct(id);
+                if(exist.authorId != userId)
+                {
+                    return new ForbidResult();
+                }
+
                 Product dbProduct = _productsService.DeleteProduct(id);
                 return new OkObjectResult(dbProduct);
             }

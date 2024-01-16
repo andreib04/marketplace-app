@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { product } from '../models/product';
+import { User } from '../models/user';
+import { UsersService } from '../services/users.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,5 +11,13 @@ import { product } from '../models/product';
 })
 export class UserComponent {
 
-  product: product = {} as product;
+  user: User = {} as User;
+
+  constructor(private usersService: UsersService, private route: ActivatedRoute) {
+    let id: number = +route.snapshot.params['id'];
+
+    this.usersService.getOneUser(id).subscribe( res => {
+      this.user = res;
+    })
+  }
 }

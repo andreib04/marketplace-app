@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../services/products.service';
 import { product } from '../models/product';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-product-page',
@@ -17,7 +18,9 @@ export class EditProductPageComponent {
     price: new FormControl<number>(0, [Validators.required]),
   });
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router) {
+    this.product.id = +route.snapshot.params['id'];
+    
     this.productsService.getOneProduct(this.product.id).subscribe(res =>{
       this.product.authorId = res.authorId;
       this.form.controls['title'].setValue(res.title);
@@ -41,4 +44,5 @@ export class EditProductPageComponent {
       })
     }
   }
+
 }

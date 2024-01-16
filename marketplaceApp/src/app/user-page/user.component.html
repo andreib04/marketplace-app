@@ -1,3 +1,21 @@
-<div class="user-page shadow">
-    
+<div class="container shadow">
+    <div class="d-flex">
+        <img class="rounded-circle" src="https://dummyimage.com/128x128/000/fff" />
+     <div class="ms-3">
+        <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+        <div class="details">
+            <div class="ms-1"><i class="fa-solid fa-phone"></i> {{ user.phone }}</div>
+        </div>
+        <div class="details">
+            <div class="ms-1"><i class="fa-solid fa-envelope"></i> {{ user.email }}</div>
+        </div>
+    </div>
+</div>
+
+<h3>{{user.firstName}}'s products:</h3>
+<div class="user-products" *ngFor="let product of user.products">
+    <h2 class="mb-0 pointer d-inline-block" routerLink="/product/{{product.id}}">{{product.title}}</h2>
+    <div class="description my-2 text-justify pointer" routerLink="/product/{{product.id}}">
+        {{product.description}}
+    </div>
 </div>

@@ -9,10 +9,10 @@ import { User } from '../models/user';
 export class UsersService {
 
   baseURL: string = "https://localhost:7141/";
-  apiPath: string = "api/User";
+  apiPath: string = "api/User/";
 
   constructor(private httpClient: HttpClient) { }
-
+  
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.baseURL}${this.apiPath}`);
   }

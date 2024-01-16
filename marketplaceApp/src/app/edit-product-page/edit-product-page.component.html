@@ -1,4 +1,4 @@
-<div class="add-page">
+<div class="edit-page">
     <form [formGroup]="form" class="add-form shadow p-3 my-5">
         <h2 class="text-center">Edit product #{{product.id}}</h2>
         <div class="form-group">
@@ -7,15 +7,16 @@
         </div>
         <div class="form-group">
             <label for="descriptionInput">Description</label>
-            <textarea class="form-control" rows="5" id="descriptionInput" formControlName="description" placeholder="Enter product description..."></textarea>
+            <textarea class="form-control" rows="7" id="descriptionInput" formControlName="description" placeholder="Enter product description..."></textarea>
         </div>
         <div class="form-group">
             <label for="descriptionInput">Price</label>
             <input class="form-control" type="number" id="priceInput" formControlName="price" placeholder="Enter product price...">
         </div>
 
-        <div>
-            <button type="submit" (click)="editProduct()">Edit Product</button>
+        <div class="buttons">
+            <button class="btn btn-secondary btn-sm" routerLink="..">Back</button>
+            <button class="btn btn-outline-success" type="submit" (click)="editProduct()">Edit Product</button>
         </div>
     </form>
 </div>

@@ -1,0 +1,25 @@
+.container{
+    padding: 30px;
+    background-color: white;
+    .ms-3{
+        align-items: center;
+    }
+
+    .details{
+        margin-top: 10px;
+    }
+}
+
+.user-products{
+    margin: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    height: 100px;
+}
+
+.description{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
