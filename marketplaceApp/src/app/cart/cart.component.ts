@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { product } from '../models/product';
 
 @Component({
   selector: 'app-cart',
@@ -7,6 +8,7 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
+  product: product = {} as product;
   items = this.cartService.getItems();
 
   clear(){
