@@ -1,28 +1,20 @@
 <nav class="navbar navbar-expand-md navbar-dark px-5">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="n-left navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
               <a class="nav-link text-right" routerLinkActive="active" routerLink="/home">Home</a>
           </li>
+            <li class="nav-item">
+              <a class="nav-link text-right" routerLinkActive="active" routerLink="/cart">Cart ({{cartItemCounter}})</a>
+            </li>
       </ul>
   </div>
-  <div>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link text-right" routerLinkActive="active" routerLink="/cart">Cart ({{cartItemCounter}})</a>
-      </li>
-    </ul>
-  </div>
-  <div class="post">
+  <div class="post n-right">
     <button class="btn btn-light ml-auto" routerLink="/add-product" *ngIf="globalService.isLoggedIn">Add Product</button>
+    <div class="login">
+      <button class="btn btn-outline-success ml-auto" routerLink="/login-page" *ngIf="!globalService.isLoggedIn">Login</button>
+      <button class="btn btn-danger ml-auto" (click)="logout()" *ngIf="globalService.isLoggedIn">Logout</button>
+    </div>
   </div>
-  <div class="login">
-    <button class="btn btn-outline-success ml-auto" routerLink="/login-page" *ngIf="!globalService.isLoggedIn">Login</button>
-    <button class="btn btn-danger ml-auto" (click)="logout()" *ngIf="globalService.isLoggedIn">Logout</button>
-  </div>
+
 </nav>

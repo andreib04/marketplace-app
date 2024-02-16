@@ -17,3 +17,15 @@
     margin-right: 5px;
     margin-left: 5px;
 }
+
+.n-right{
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 768px){
+    .navbar{
+        display: flex;
+        flex-direction: column;
+    }
+}

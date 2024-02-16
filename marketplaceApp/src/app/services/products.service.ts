@@ -32,7 +32,7 @@ export class ProductsService {
       Authorization: `Bearer ${localStorage.getItem('token')}`
     });
 
-    return this.httpClient.put<product>(`${this.baseURL}${this.apiPath}`, product, {headers});
+    return this.httpClient.put<product>(`${this.baseURL}${this.apiPath}/${id}`, product, {headers});
   }
 
   deleteProduct(id: number): Observable<product>{

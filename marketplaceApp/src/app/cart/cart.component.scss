@@ -37,7 +37,7 @@
 }
 
 .details {
-    margin-right: 10px; /* Adjust as needed */
+    margin-right: 10px; 
     padding: 5px;
 }
 
@@ -65,4 +65,50 @@
     display: flex;
     justify-content: space-between;
     margin: 30px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .cart {
+        margin: 5px;
+    }
+
+    .header {
+        margin: 5px;
+        width: 90%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .heading {
+        font-size: 18px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .about {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .details {
+        margin-right: 0;
+        padding: 5px;
+        
+    }
+
+    .title{
+        text-align: center;
+    }
+    .price {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .buttons {
+        flex-direction: column;
+        margin: 15px;
+    }
 }

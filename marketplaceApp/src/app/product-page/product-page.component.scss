@@ -52,3 +52,41 @@
     align-items: flex-end;
 }
 
+
+@media only screen and (max-width: 1000px) {
+    .product-page {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .product-details,
+    .user-info,
+    .action-buttons {
+        width: 100%;
+        margin: 0;
+    }
+
+    .product-title {
+        margin-bottom: 10px;
+    }
+
+    .profile-picture,
+    .profile-info,
+    .add-cart-btn {
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .action-buttons {
+        justify-content: space-around;
+    }
+
+    .btn {
+        width: auto;
+        height: auto;
+        margin: 5px;
+        padding: 10px 20px;
+    }
+    
+}

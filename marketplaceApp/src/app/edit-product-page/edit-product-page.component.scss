@@ -10,3 +10,23 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+
+@media only screen and (max-width: 1000px) {
+    .add-form {
+        padding: 10px; 
+    }
+
+    .form-group {
+        margin-bottom: 15px; 
+    }
+
+    .btn {
+        width: 100%; 
+    }
+
+    .buttons {
+        flex-direction: column; 
+    }
+}

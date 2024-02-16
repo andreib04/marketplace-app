@@ -3,8 +3,9 @@
     <div class="main-search-input-item">
       <input type="text" value="" placeholder="Search Products..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch()" />
     </div>
-
-    <button class="main-search-button" (click)="onSearch()">Search</button>
+    <div class="main-button">
+      <button class="main-search-button" (click)="onSearch()">Search</button>
+    </div>
   </div>
 </div>
 
