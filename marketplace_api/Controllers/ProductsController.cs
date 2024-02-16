@@ -92,7 +92,7 @@ namespace marketplace_api.Controllers
             int userId = int.Parse(claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value ?? "0");
 
 
-            if(product.authorId != userId)
+            if (product.authorId != userId)
             {
                 return new ForbidResult();
             }

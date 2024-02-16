@@ -19,7 +19,7 @@ export class EditProductPageComponent {
     price: new FormControl<number>(0, [Validators.required]),
   });
 
-  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router, private location: Location) {
+  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router) {
     this.product.id = +route.snapshot.params['id'];
     
     this.productsService.getOneProduct(this.product.id).subscribe(res =>{
